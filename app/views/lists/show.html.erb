@@ -1,0 +1,21 @@
+<div class="container my-4">
+  <h1 class="text-center"><%= @list.name %></h1>
+</div>
+<div class="container w-50">
+  <div class="container">
+    <ul class="list-group">
+        <% if @bookmarks.empty?  %>
+          <li class="list-group-item"><%= "The list is empty!" %></li>
+        <% else %>
+          <% @bookmarks.each do |bookmark|  %>
+            <li class="list-group-item"><%= @movies.find(bookmark.movie_id).title %></li>
+          <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="container my-4">
+    <%= link_to "Add Movie", new_list_bookmark_path(@list), class: "btn btn-sm btn-outline-success mx-2 px-3"  %>
+    <%= link_to "Remove", list_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-sm btn-outline-danger"  %>
+    <%= link_to "All lists", lists_path, class: "btn btn-sm btn-outline-secondary mx-2 px-3"  %>
+  </div>
+</div>

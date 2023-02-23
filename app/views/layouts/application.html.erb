@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <a href="/lists" class="navbar-brand mx-2">Rails Watch List</a>
+      <form class="form-inline">
+        <%= link_to "New List", new_list_path, class: "btn btn-outline-secondary m-2" %>
+      </form>
+    </nav>
+    <div class="banner" style="background-image: url(https://res.cloudinary.com/practicaldev/image/fetch/s--THrf5Yjw--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/n6brz4p7iq7j1mulo1nv.jpg);">
+    </div>
     <%= yield %>
   </body>
 </html>

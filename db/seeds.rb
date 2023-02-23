@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+
+
+List.create(name: "Test List 2")
+puts "list create"
+
+Bookmark.create(comment: "testing the bookmark 2", movie_id: 6, list_id: 1)
+puts "bookmark created"
+Bookmark.create(comment: "testing the bookmark 3", movie_id: 7, list_id: 2)
+puts "bookmark created"
