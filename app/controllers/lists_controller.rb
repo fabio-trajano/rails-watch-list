@@ -1,3 +1,6 @@
+require "json"
+require "open-uri"
+
 class ListsController < ApplicationController
   before_action :set_id, only: [:show, :edit, :update, :destroy]
 
@@ -47,4 +50,12 @@ class ListsController < ApplicationController
   def list_params
     params.require(:list).permit(:name)
   end
+
+  def fetch_movies
+    url = "https://tmdb.lewagon.com/movie/top_rated"
+    movies_serialized = URI.open(url).read
+    @movies = JSON.parse(movies_serialized)
+  end
+
+
 end

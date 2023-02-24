@@ -8,10 +8,18 @@
 
 
 
-List.create(name: "Test List 2")
-puts "list create"
 
-Bookmark.create(comment: "testing the bookmark 2", movie_id: 6, list_id: 1)
-puts "bookmark created"
-Bookmark.create(comment: "testing the bookmark 3", movie_id: 7, list_id: 2)
-puts "bookmark created"
+# Bookmark.create(comment: "testing the bookmark 2", movie_id: 6, list_id: 1)
+# puts "bookmark created"
+# Bookmark.create(comment: "testing the bookmark 3", movie_id: 7, list_id: 2)
+# puts "bookmark created"
+
+url = "https://tmdb.lewagon.com/movie/top_rated"
+movies_serialized = URI.open(url).read
+movies_results = JSON.parse(movies_serialized)
+movies = movies_results["results"]
+
+movies.each do |movie|
+  Movie.create(title: movie["original_title"], overview: movie["overview"], poster_url: movie["/6gIJuFHh5Lj4dNaPG3TzIMl7L68.jpg"], rating: movie["vote_average"].to_i)
+  puts "movie created"
+end
