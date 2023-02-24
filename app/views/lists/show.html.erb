@@ -1,21 +1,29 @@
+
 <div class="container my-4">
   <h1 class="text-center"><%= @list.name %></h1>
 </div>
-<div class="container w-50">
-  <div class="container">
-    <ul class="list-group">
-        <% if @bookmarks.empty?  %>
-          <li class="list-group-item"><%= "The list is empty!" %></li>
-        <% else %>
-          <% @bookmarks.each do |bookmark|  %>
-            <li class="list-group-item"><%= @movies.find(bookmark.movie_id).title %></li>
-          <% end %>
-      <% end %>
-    </ul>
-  </div>
+
+<div class="container mb-5">
   <div class="container my-4">
     <%= link_to "Add Movie", new_list_bookmark_path(@list), class: "btn btn-sm btn-outline-success mx-2 px-3"  %>
     <%= link_to "Remove", list_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-sm btn-outline-danger"  %>
     <%= link_to "All lists", lists_path, class: "btn btn-sm btn-outline-secondary mx-2 px-3"  %>
+  </div>
+</div>
+<hr>
+<div class="container mb-5">
+  <div class="row row-cols-1 row-cols-md-3 g-5">
+    <% @bookmarks.each do |bookmark|  %>
+    <div class="col-md-4">
+      <div class="card bg-dark mb-5 g-5 h-100" style="width: 20rem;">
+        <%= image_tag "https://image.tmdb.org/t/p/w500/#{@movies.find(bookmark.movie_id).poster_url}", class:"card-img-top"%>
+        <div class="card-body pb-0">
+          <h5 class="card-title"><%= @movies.find(bookmark.movie_id).title %></h5>
+          <p class="card-text"><%= @movies.find(bookmark.movie_id).overview %></p>
+          <p class="badge bg-danger rounded-pill"> <%= "Rating: #{@movies.find(bookmark.movie_id).rating}" %></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>

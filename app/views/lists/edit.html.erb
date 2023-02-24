@@ -1,2 +1,14 @@
-<h1>Lists#edit</h1>
-<p>Find me in app/views/lists/edit.html.erb</p>
+<div class="container" style="width: 50%;">
+  <div class="text-center m-4">
+    <h2>Edit <%= @list.name %> list</h2>
+  </div>
+  <%= simple_form_for [@list] do |f| %>
+    <%= f.input :name %>
+    <div class="container d-flex justify-content-center">
+      <%= f.submit "Submit", class: "btn btn-outline-success mt-3" %>
+    </div>
+  <% end %>
+  <div class="container my-5 text-center">
+  <%= link_to "All lists", lists_path, class: "btn btn-sm btn-outline-secondary mx-2 px-3"  %>
+  </div>
+</div>
